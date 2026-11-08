@@ -99,19 +99,19 @@ function Component3({ pokeType, pokeStats, pokeAbilities }) {
           </Tooltip>
         ))}
       </ul>
-      <h1>Base Stats:</h1>
+      <h1>능력치:</h1>
       <div style={{ borderLeft: "solid", marginLeft: "1em" }}>
         <div style={{ marginLeft: "2em" }}>
           <div style={{ display: "flex" }}>
             <div style={badge.container}>
-              <div style={badge.label}>HP:</div>
+              <div style={badge.label}>체력:</div>
               <div style={badge.value}>
                 {pokeStats[0] && pokeStats[0].base_stat}
               </div>
             </div>
             <div style={{ marginLeft: "1em" }}>
               <div style={badge.container}>
-                <div style={badge.label}>ATTACK:</div>
+                <div style={badge.label}>공격력:</div>
                 <div style={badge.value}>
                   {pokeStats[1] && pokeStats[1].base_stat}
                 </div>
@@ -120,21 +120,21 @@ function Component3({ pokeType, pokeStats, pokeAbilities }) {
           </div>
 
           <div style={badge.container}>
-            <div style={badge.label}>DEFENSE:</div>
+            <div style={badge.label}>방어력:</div>
             <div style={badge.value}>
               {pokeStats[2] && pokeStats[2].base_stat}
             </div>
           </div>
           <div style={{ display: "flex" }}>
             <div style={badge.container}>
-              <div style={badge.label}>SP. ATTACK:</div>
+              <div style={badge.label}>특수공격:</div>
               <div style={badge.value}>
                 {pokeStats[3] && pokeStats[3].base_stat}
               </div>
             </div>
             <div style={{ marginLeft: "1em" }}>
               <div style={badge.container}>
-                <div style={badge.label}>SP. DEFENSE:</div>
+                <div style={badge.label}>특수방어:</div>
                 <div style={badge.value}>
                   {pokeStats[4] && pokeStats[4].base_stat}
                 </div>
@@ -143,7 +143,7 @@ function Component3({ pokeType, pokeStats, pokeAbilities }) {
           </div>
 
           <div style={badge.container}>
-            <div style={badge.label}>SPEED:</div>
+            <div style={badge.label}>속도:</div>
             <div style={badge.value}>
               {pokeStats[5] && pokeStats[5].base_stat}
             </div>
@@ -151,11 +151,11 @@ function Component3({ pokeType, pokeStats, pokeAbilities }) {
         </div>
       </div>
       <div style={{ borderTop: "solid", width: '30em' }}>
-        <h1>Abilities:</h1>
+        <h1>특성:</h1>
 
         <div style={{ display: "flex", marginTop: "1em" }}>
           <div style={badge.container}>
-            <div style={badge.label}>Ability 1:</div>
+            <div style={badge.label}>특성 1:</div>
             <div style={badge.value}>
               {pokeAbilities[0] && pokeAbilities[0].abilities}
             </div>
@@ -163,7 +163,7 @@ function Component3({ pokeType, pokeStats, pokeAbilities }) {
           {pokeAbilities[1] && (
             <div style={{ marginLeft: "1em" }}>
               <div style={badge.container}>
-                <div style={badge.label}>Ability 2:</div>
+                <div style={badge.label}>특성 2:</div>
                 <div style={badge.value}>{pokeAbilities[1].abilities}</div>
               </div>
             </div>
