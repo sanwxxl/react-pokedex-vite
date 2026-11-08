@@ -1,79 +1,39 @@
-# React Pokedex
+#주요 기능 설명
 
-![Pokedex Screenshot](./src/img/screenshot.png)
-
-
-React Pokedex is a simple web application that allows you to explore and search for information about various Pokemon. It uses the Pokemon API to fetch data and display it in an organized manner.
-
-## Table of Contents
-
-- [Demo](#demo)
-- [Features](#features)
-- [Getting Started](#getting-started)
-- [Usage](#usage)
-- [API](#api)
-- [Contributing](#contributing)
-
-## Demo
-
-You can see a live demo of the React Pokedex here: [Live Demo](https://react-pokedex-vite.vercel.app)
-
-## Features
-
-- View a list of Pokemon with their names and images.
-- Search for specific Pokemon by name or ID.
-- Responsive design for both desktop and mobile.
-
-## Getting Started
-
-These instructions will help you set up the project on your local machine.
-
-### Prerequisites
-
-- [Node.js](https://nodejs.org/) and [npm](https://www.npmjs.com/) installed on your system.
-
-### Installation
-
-1. Clone this repository to your local machine:
-
-   ```shell
-   git clone https://github.com/Ryotard/react-pokedex-vite.git
-
-   ```
-
-2. Navigate to the project directory:
-
-   ```shell
-   cd react-pokedex-vite
-
-   ```
-
-3. Install the project dependencies:
-
-   ```shell
-   npm install
-   ```
+1.주요 파일
+---
+   > components/Root.jsx:
+      앱의 두뇌 역할이다. useState는 포켓몬의 번호와 키 몸무게 등 정보를 저장하고,  useEffect로 id가 바뀔때마다 PokeAPI를 불러서 그 state를 채운다.
+   
+   > components/TopBar.jsx
+      검색 기능을 담당한다. 처음 페이지가 열릴 때 전체 포켓몬 이름 목록을 받아와서 입력창에서 그 글자를 치면 filter로 그 글자로 시작하는 이름만 검색해준다.
 
 
+2.주요 컴포넌트 
+---
+   >Footer:
+      화면 아래에 화살표 두개와 포켓몬 번호(id)를 표시하는 영역이다 ( <| 번호 |>).
+      <를 누르면 prevCount, >를 누르면 forwardCount, 숫자를 입력하면 paging을 부른다. 즉 Footer는 직접 번호를 바꾸지 않고 "번호 바꿔줘"라고 Root에게 요청만 보내고, 그러면 Root의 id가 바뀌고 모든 컴포넌트가 새 포켓몬으로 다시 그려진다.
 
 
-## Usage
+3.코드 설명
+---
 
-To start the development server, run:
 
-   ```shell
-    npm run dev
-   ```
+코드:
+```jsx
+ const [sprite, setSprite] = useState(loading);
+   useEffect(() => {
+  setSprite(loading);
+  fetch(`https://pokeapi.co/api/v2/pokemon/${props.pokeId}`)
+    .then((res) => res.json())
+    .then((data) => {
+      setSprite(data.sprites.other["official-artwork"].front_default);
+    })
+    .catch((err) => console.error(err));
+}, [props.pokeId]);
+```
 
-## API 
+> 포켓몬 그림을 불러오는 코드이다. sprit에 띄울 값을 처음으로 설정한다.(여기서 기본값은 로딩 그림). [props.pokeId]로 인해서 번호가 바뀔때마다 useEffect가 다시 실행된다. 실행되면 먼저 그림을 로딩 GIF로 바꿔두고, 그 번호의 포켓몬 정보를 API에 요청을 보낸다. 여기서 두가지로 나뉘는데, 먼저 응답이 오면 JSON으로 바꾼 뒤 공식 일러스트 주소를 꺼내 sprite에 넣는다. 또한 state가 바뀌니 화면의 <img>가 새 그림으로 바뀌게된다. 실패하면 catch에서 콘솔에 에러만 찍음.
 
-The React Pokedex application uses the [Pokemon API](https://pokeapi.co) to fetch Pokemon data. You can explore the API documentation to learn more about the available endpoints and data.
 
-## Contributing
-Contributions are welcome! If you'd like to contribute to this project, please follow these guidelines:
-
-1. Fork the repository.
-2. Create a new branch for your feature or bug fix.
-3. Make your changes and commit them with descriptive commit messages.
-4. Push your changes to your fork.
-5. Create a pull request to the main branch of this repository.
