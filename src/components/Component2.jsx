@@ -1,6 +1,6 @@
 import { Flex } from "antd";
 import { useEffect, useState } from "react";
-import loading from "../img/loading.gif"
+import loading from "../img/pikachuSpace.gif"
 
 
 function Component2(props) {
