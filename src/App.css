@@ -1,6 +1,6 @@
 * {
   list-style-type: none;
-  font-family: Futura, Trebuchet MS, Arial, sans-serif;
+  font-family: "Malgun Gothic", sans-serif;
 }
 html, body{
   height: 100%; /* Make sure the <html> and <body> elements cover the full viewport height */
